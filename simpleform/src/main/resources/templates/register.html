@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+<h1>Register</h1>
+<form th:action="@{/register}" th:object="${registeredUser}" method="POST">
+
+    <input type="text" th:field="*{name}" class="form-control col-4 mb-4" placeholder="Enter Name" />
+    <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+
+    <input type="number" th:field="*{age}" class="form-control col-4 mb-4" placeholder="Enter age" />
+    <div class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</div>
+    <br>
+    <button type="submit" class="btn btn-primary col-2">Register</button>
+
+
+</form>
+
+</body>
+</html>

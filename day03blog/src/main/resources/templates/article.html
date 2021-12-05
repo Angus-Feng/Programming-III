@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" th:href="@{/style.css}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>Article | My article</title>
+</head>
+
+<body class="grey lighten-4">
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
+<div class="container" th:object="${article}">
+  <h4 class="title" th:text="${article.title}"></h4>
+  <p class="grey-text text-darken-2" th:text="'Posted by '+${article.author.username}+' on '+${#temporals.format(article.createdTS, 'MM dd, yyyy HH:mm:ss')}"></p>
+  <br>
+  <div class="materialize-textarea" th:utext="${article.body}">
+
+  </div>
+</div>
+</body>
+
+</html>

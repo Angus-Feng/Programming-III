@@ -1,0 +1,17 @@
+{
+  "name": "maildev",
+  "version": "1.0.0",
+  "description": "for java spring projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "666"
+  },
+  "keywords": [
+    "mailserver"
+  ],
+  "author": "feng",
+  "license": "ISC",
+  "dependencies": {
+    "maildev": "^0.5.1"
+  }
+}

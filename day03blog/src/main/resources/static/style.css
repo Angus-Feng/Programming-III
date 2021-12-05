@@ -1,0 +1,32 @@
+.brand {
+    background: #cbb09c !important;
+}
+
+.brand-text {
+    color: #25a59b !important;
+}
+
+.materialize-textarea {
+    height: 20rem !important;
+    border: thick solid grey !important;
+    overflow: auto;
+    font-size: large;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.comment {
+    resize: none;
+    margin-bottom: 20px;
+    left: 0px;
+}
+
+.large-text {
+    font-size: large !important;
+    font-weight: bold !important;
+}
+
+body {
+    width: 60%;
+    margin: auto;
+}
