@@ -46,4 +46,5 @@ public class BlogController {
     public String addArticle(@Valid Article article, BindingResult result, Principal principal) {
         return blogService.addArticle(article, result, principal);
     }
+
 }

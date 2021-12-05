@@ -54,12 +54,13 @@ public class BlogService {
     }
 
     public String addArticle(@Valid Article article, BindingResult result, Principal principal) {
-        // TODO: error handling
+        // TODO: validation and error display
         if (result.hasErrors()) {
             return "add_article";
         }
         BlogUser author = blogUserRepository.findByUsername(principal.getName()).get();
         article.setAuthor(author);
+        article.setCreatedTS(LocalDateTime.now());
         Long id = articleRepository.save(article).getId();
         return "redirect:/article?id=" + id.toString();
     }

@@ -46,8 +46,8 @@ public class BlogUserController {
         return "login";
     }
 
-    @PostMapping("/logout")
-    public String logout() {
-        return "redirect:/";
-    }
+//    @PostMapping("/logout")
+//    public String logout() {
+//        return "redirect:/";
+//    }
 }
