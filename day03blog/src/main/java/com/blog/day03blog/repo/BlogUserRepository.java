@@ -2,6 +2,7 @@ package com.blog.day03blog.repo;
 
 import com.blog.day03blog.entity.BlogUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -10,4 +11,6 @@ import java.util.Optional;
 public interface BlogUserRepository extends JpaRepository<BlogUser, Long> {
 
     Optional<BlogUser> findByUsername(String username);
+
+    Optional<BlogUser> findFirstByUsernameIsNotNull();
 }

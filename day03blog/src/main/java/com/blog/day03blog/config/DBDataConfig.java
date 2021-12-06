@@ -26,67 +26,71 @@ public class DBDataConfig {
 
     @Bean
     CommandLineRunner addUsers(BlogUserRepository blogUserRepository, ArticleRepository articleRepository) {
-        // TODO: if any users or articles already  exist then skip this initialization (return)
-        String password = bCryptPasswordEncoder.encode("Password123");
-        return args -> {
-            BlogUser jerry123 = new BlogUser(
-                    "jerry123",
-                    "jerry@gmail.com",
-                    password
-            );
-            BlogUser terry123 = new BlogUser(
-                    "terry123",
-                    "terry@gmail.com",
-                    password
-            );
-            BlogUser mary123 = new BlogUser(
-                    "mary123",
-                    "mary@gmail.com",
-                    password
-            );
-            blogUserRepository.saveAll(
-                    List.of(jerry123, terry123, mary123)
-            );
-            Article a1 = new Article(
-                    jerry123,
-                    LocalDateTime.now(),
-                    "this is title",
-                    ARTICLE
-            );
-            Article a2 = new Article(
-                    jerry123,
-                    LocalDateTime.now().plusHours(1),
-                    "this is title",
-                    ARTICLE
-            );
-            Article a3 = new Article(
-                    terry123,
-                    LocalDateTime.now().plusHours(2),
-                    "this is title",
-                    ARTICLE
-            );
-            Article a4 = new Article(
-                    terry123,
-                    LocalDateTime.now().plusHours(3),
-                    "this is title",
-                    ARTICLE
-            );
-            Article a5 = new Article(
-                    mary123,
-                    LocalDateTime.now().plusHours(4),
-                    "this is title",
-                    ARTICLE
-            );
-            Article a6 = new Article(
-                    mary123,
-                    LocalDateTime.now().plusHours(5),
-                    "this is title",
-                    ARTICLE
-            );
-            articleRepository.saveAll(
-                    List.of(a1, a2, a3, a4, a5, a6)
-            );
-        };
+
+        if(blogUserRepository.findFirstByUsernameIsNotNull().isEmpty() && articleRepository.findFirstByBodyIsNotNull().isEmpty()) {
+
+            String password = bCryptPasswordEncoder.encode("Password123");
+            return args -> {
+                BlogUser jerry123 = new BlogUser(
+                        "jerry123",
+                        "jerry@gmail.com",
+                        password
+                );
+                BlogUser terry123 = new BlogUser(
+                        "terry123",
+                        "terry@gmail.com",
+                        password
+                );
+                BlogUser mary123 = new BlogUser(
+                        "mary123",
+                        "mary@gmail.com",
+                        password
+                );
+                blogUserRepository.saveAll(
+                        List.of(jerry123, terry123, mary123)
+                );
+                Article a1 = new Article(
+                        jerry123,
+                        LocalDateTime.now(),
+                        "this is title",
+                        ARTICLE
+                );
+                Article a2 = new Article(
+                        jerry123,
+                        LocalDateTime.now().plusHours(1),
+                        "this is title",
+                        ARTICLE
+                );
+                Article a3 = new Article(
+                        terry123,
+                        LocalDateTime.now().plusHours(2),
+                        "this is title",
+                        ARTICLE
+                );
+                Article a4 = new Article(
+                        terry123,
+                        LocalDateTime.now().plusHours(3),
+                        "this is title",
+                        ARTICLE
+                );
+                Article a5 = new Article(
+                        mary123,
+                        LocalDateTime.now().plusHours(4),
+                        "this is title",
+                        ARTICLE
+                );
+                Article a6 = new Article(
+                        mary123,
+                        LocalDateTime.now().plusHours(5),
+                        "this is title",
+                        ARTICLE
+                );
+                articleRepository.saveAll(
+                        List.of(a1, a2, a3, a4, a5, a6)
+                );
+            };
+        }
+        return args -> {};
     }
 
 

@@ -2,6 +2,7 @@ package com.blog.day03blog.config;
 
 import com.blog.day03blog.service.BlogUserService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @AllArgsConstructor
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+    @Autowired
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final BlogUserService blogUserService;
 

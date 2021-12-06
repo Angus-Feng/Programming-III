@@ -11,4 +11,5 @@ logs
 
 *.iml
 .DS_Store
-.properties
+application.properties
+application.yml
