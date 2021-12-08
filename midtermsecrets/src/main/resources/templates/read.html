@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Read Secret</title>
+</head>
+<body>
+<div class="container">
+    <h4>Read your secret with your secret reading code </h4><br>
+<form th:action="@{/read}"  method="post">
+    <input type="text" name="readToken"/>
+    <div class="red-text" th:if="${notFound}" th:text="${notFound}">error</div>
+    <input class="waves-effect waves-light btn" type="submit" name="submit" value="Submit!">
+</form><br>
+    <a th:href="@{'/'}">Back to Homepage</a><br>
+    <h5 class="blue-text text-darken-2" th:if="${secret}" th:text="'your secret is: '"></h5>
+    <h5 class="blue-text text-darken-2" th:if="${secret}" th:text="${secret.getBody()}"></h5><br>
+</div>
+</body>
+</html>

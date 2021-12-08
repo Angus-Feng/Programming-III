@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Create Secret</title>
+</head>
+<body>
+<div class="container">
+<h3 class="brand-text">Write a secret</h3>
+<form th:action="@{/create}" th:object="${secret}" method="POST">
+  <label >Your secret</label>
+  <textarea class="materialize-textarea" th:field="*{body}" ></textarea><br>
+  <div class="red-text" th:if="${#fields.hasErrors('body')}" th:errors="*{body}">error</div>
+  <label >It last until</label>
+  <input type="datetime-local" th:field="*{stringExpiryDT}" ><br>
+  <div class="red-text" th:if="${#fields.hasErrors('expiryDT')}" th:errors="*{expiryDT}">error</div>
+  <input class="waves-effect waves-light btn" type="submit" name="submit" value="Save!">
+</form><br>
+    <a th:href="@{'/'}">Back to Homepage</a>
+</div>
+</body>
+</html>

@@ -43,7 +43,6 @@ public class BlogUserService implements UserDetailsService {
             FieldError pwRepeat = new FieldError("blogUser", "passwordRepeat", "Please enter the same password");
             result.addError(pwRepeat);
         }
-        System.out.println(result);
         if (result.hasErrors()) {
             return "register";
         }

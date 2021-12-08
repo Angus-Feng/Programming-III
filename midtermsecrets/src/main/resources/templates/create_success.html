@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Create success</title>
+</head>
+<body>
+<div class="container">
+  <h5>Your secret has been saved! Please save the following code for future use.</h5>
+  <h6 th:if="${readToken}" th:text="'Secret reading code to read this secret: ' + ${readToken}"></h6>
+  <h6 th:if="${updateToken}" th:text="'Secret updating code to modify this secret: ' + ${updateToken}"></h6>
+  <br>
+  <a th:href="@{'/'}">Back to Homepage</a>
+</div>
+</body>
+</html>

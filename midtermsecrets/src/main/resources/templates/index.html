@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Home</title>
+</head>
+<body>
+<div class="container">
+  <h4>Welcome to My secret</h4>
+  <h6 th:text="'There are ' + ${unExpired} + ' unexpired messages.'"></h6>
+  <h6 th:text="'There are ' + ${unread} + ' unread messages.'"></h6>
+
+<br>
+  <a th:href="@{'/create'}">Write a secret</a><br>
+  <a th:href="@{'/read'}">Read a secret</a><br>
+  <a th:href="@{'/update'}">Modify a secret</a><br>
+  <a th:href="@{'/cleanexpired'}">Clean all expired secrets</a>
+
+</div>
+</body>
+</html>
