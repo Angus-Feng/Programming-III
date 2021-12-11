@@ -3,12 +3,15 @@ package com.blog.day03blog.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -20,11 +23,17 @@ public class BlogUser implements UserDetails {
     @GeneratedValue
     private Long id;
 
-    // List<Article> articleList;
+    private enum Role {
+        READER,
+        ADMIN
+    }
 
     @Column(nullable = false)
     @Pattern(regexp = "^[a-z0-9]{4,20}$",message="Username can only contains lowercase letters and numbers. And must be between 4-20 characters.")
     private String username;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.READER;
 
     @Column(nullable = false)
     @Email
@@ -51,7 +60,9 @@ public class BlogUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> list = new ArrayList<>();
+        list.add(new SimpleGrantedAuthority("ROLE_" + role.name()));
+        return list;
     }
 
     @Override

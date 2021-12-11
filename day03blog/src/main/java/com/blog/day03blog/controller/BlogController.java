@@ -4,6 +4,7 @@ import com.blog.day03blog.entity.Article;
 import com.blog.day03blog.service.BlogService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class BlogController {
     }
 
     @GetMapping("/article")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public ModelAndView showArticle(@RequestParam Long id) {
         return blogService.getArticleById(id);
     }
@@ -43,6 +45,7 @@ public class BlogController {
     }
 
     @PostMapping("/add_article")
+    @PreAuthorize(value = "hasRole('READER')")
     public String addArticle(@Valid Article article, BindingResult result, Principal principal) {
         return blogService.addArticle(article, result, principal);
     }
